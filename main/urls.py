@@ -8,5 +8,6 @@ urlpatterns = [
   url(r'^vaatatootaja/', views.vaatatootaja, name='vaatatootaja'),
   url(r'^lisatootaja/', views.lisatootaja, name='lisatootaja'),
   url(r'^kustutatootaja/', views.kustutatootaja, name='kustutatootaja'),
-  url(r'^lisaasutus/', views.lisaasutus, name='lisaasutus')
+  url(r'^lisaasutus/', views.lisaasutus, name='lisaasutus'),
+  url(r'^vaata_asutusi/', views.vaata_asutusi, name='vaata_asutusi')
 ]

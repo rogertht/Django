@@ -13,6 +13,12 @@ def vaatatootaja(request):
     args = {'tootajad': tootajad,
             'page_url': request.get_full_path()}
     return render(request, 'main/vaatatootaja.html', args)
+
+def vaata_asutusi(request):
+    asutused = Asutus.objects.all()
+    args = {'asutused': asutused,
+            'page_url': request.get_full_path()}
+    return render(request, 'main/vaata_asutusi.html', args)
     
 
 def lisatootaja(request):

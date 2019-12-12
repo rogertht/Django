@@ -1,0 +1,26 @@
+{% extends "base.html" %} {% block content %}
+<h2>Siit leiad poeketi poodide andmed</h2>
+
+<hr>
+
+<table class="table" style="width: 25%;">
+	<thead>
+		<tr>
+			<th scope="col">Poe nimi</th>
+			<th scope="col">Avamise kellaaeg</th>
+			<th scope="col">Sulgemise kellaaeg</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for asutus in asutused %}
+		<tr>
+      
+      <td>{{asutus.nimi}}</td>
+      <td>{{asutus.avamise_kellaaeg}}</td>
+      <td>{{asutus.sulgemise_kellaaeg}}</td>
+		</tr>
+		{% endfor %}
+	</tbody>
+  <br>
+  
+	{% endblock content %}
