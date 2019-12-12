@@ -46,7 +46,7 @@ def lisaasutus(request):
       nimi = request.POST.get('nimi', '')
       avamise_kellaaeg = request.POST.get('poe_avamise_aeg', '')
       sulgemise_kellaaeg = request.POST.get('poe_sulgemise_aeg', '')
+      Asutus.objects.create(nimi=nimi, avamise_kellaaeg=avamise_kellaaeg, sulgemise_kellaaeg=sulgemise_kellaaeg)
 
-      Asutus.objects.create(nimi=nimi)
     args = {'page_url': request.get_full_path()}
     return render(request, 'main/lisaasutus.html', args)
