@@ -38,6 +38,9 @@ def kustutatootaja(request):
 def lisaasutus(request):
     if request.method == "POST":
       nimi = request.POST.get('nimi', '')
+      avamise_kellaaeg = request.POST.get('poe_avamise_aeg', '')
+      sulgemise_kellaaeg = request.POST.get('poe_sulgemise_aeg', '')
+
       Asutus.objects.create(nimi=nimi)
     args = {'page_url': request.get_full_path()}
     return render(request, 'main/lisaasutus.html', args)

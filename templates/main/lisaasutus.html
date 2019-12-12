@@ -8,6 +8,14 @@
     {% csrf_token %}
     Poe nimi:<br>
     <input class="form-control" type="text" name="nimi" value="" required>
+    <br>
+    Poe avamise aeg:
+    <input type="time" id="poe_avamise_aeg" name="poe_avamise_aeg"
+       min="09:00" max="18:00" required>
+    <br>
+    Poe sulgemise aeg:
+    <input type="time" id="poe_sulgemise_aeg" name="poe_sulgemise_aeg"
+       min="09:00" max="18:00" required>
     <br><br>
     <input class="btn btn-primary" type="submit" value="Kinnita" style="float: right;">
   </form> 
