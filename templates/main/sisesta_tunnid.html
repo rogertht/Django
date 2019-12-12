@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Sisesta töötaja töötatud tundide arv.</h2>
+
+<hr>
+
+<div style="width: 25%">
+  <form action="/sisesta_tunnid/" method="post" class="form-group">
+    {% csrf_token %}
+    Töötaja:<br>
+    <select class="browser-default custom-select" name="tootaja" required>
+      {% for tootaja in tootajad %}
+      <option value="{{tootaja.pk}}">
+        {{tootaja.perekonnaNimi}}, {{tootaja.eesNimi}}
+      </option>
+      {% endfor %}
+    </select>
+    <br>
+    <br>
+    Kuupäev:<br>
+    <input class="form-control" type="date" name="kuupaev" value="" required>
+    <br>
+    Töötatud tundide arv:<br>
+    <input class="form-control" type="number" name="tootunde" value="" required>
+
+    <br><br>
+    <input class="btn btn-primary" type="submit" value="Kinnita" style="float: right;">
+  </form> 
+</div>
+{% endblock content %}

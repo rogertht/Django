@@ -1,0 +1,27 @@
+{% extends "base.html" %} {% block content %}
+<h2>Töötajate töötundide summad</h2>
+
+<hr>
+
+<table class="table" style="width: 25%;">
+    <thead>
+		<tr>			
+            {% for tootaja in tootajad %}
+            <th scope="col">{{tootaja.perekonnaNimi}},
+                <br> {{tootaja.eesNimi}}
+            </th>
+            
+            {% endfor %}
+        </tr>
+    </thead>
+    <tbody>
+		<tr>			
+            {% for tund in tunnid %}
+            <th scope="col">{{tund}}</th>
+            {% endfor %}
+        </tr>
+    </tbody>
+
+  <br>
+  
+	{% endblock content %}

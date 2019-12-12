@@ -1,12 +1,32 @@
 from django.shortcuts import *
 from main.models import Asutus
 from main.models import Tootaja
+from main.models import TooajaTabel
 
 # Create your views here.
 def home(request):
     args = {'page_url': request.get_full_path()}
     return render(request, 'main/index.html', args)
     
+def vaata_tootundide_summasid(request):
+    tootajad = Tootaja.objects.all()
+    tootunnid = TooajaTabel.objects.all()
+    tundide_summad = {}
+
+    for tootaja in tootajad:
+      
+      tundide_summad.update( { tootaja:0 } )      
+      for tootund in tootunnid:
+        if tootund.tootaja == tootaja:
+           tundide_summad[tootaja] = tundide_summad[tootaja] + tootund.tootunde
+
+    keys = tundide_summad.keys() 
+    values = tundide_summad.values() 
+    
+    args = {'tootajad': keys,
+            'tunnid': values,
+            'page_url': request.get_full_path()}
+    return render(request, 'main/vaata_tootundide_summasid.html', args)    
 
 def vaatatootaja(request):
     tootajad = Tootaja.objects.all()
@@ -20,6 +40,19 @@ def vaata_asutusi(request):
             'page_url': request.get_full_path()}
     return render(request, 'main/vaata_asutusi.html', args)
     
+
+def sisesta_tunnid(request):
+    if request.method == "POST":
+      tootaja = request.POST.get('tootaja', '')
+      kuupaev = request.POST.get('kuupaev', '')
+      tootunde = request.POST.get('tootunde', '')
+      tootaja = Tootaja.objects.only('id').get(pk=tootaja)
+
+      TooajaTabel.objects.create(tootaja=tootaja, kuupaev=kuupaev, tootunde=tootunde)
+    
+    args = {'tootajad' : Tootaja.objects.all(),
+            'page_url': request.get_full_path()}
+    return render(request, 'main/sisesta_tunnid.html', args)
 
 def lisatootaja(request):
     if request.method == "POST":
