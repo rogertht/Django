@@ -8,7 +8,7 @@
 <div style="width: 25%">
   <form action="/lisatootaja/" method="post" class="form-group">
     {% csrf_token %}
-    Asutus:<br>
+    Pood:<br>
     <select class="browser-default custom-select" name="asutus" required>
       {% for asutus in asutused %}
       <option value="{{asutus.pk}}">
@@ -24,7 +24,7 @@
     Perekonnanimi:<br>
     <input class="form-control" type="text" name="perekonnaNimi" value="" required>
     <br><br>
-    <input class="btn btn-primary" type="submit" value="Submit" style="float: right;">
+    <input class="btn btn-primary" type="submit" value="Kinnita" style="float: right;">
   </form> 
 </div>
 {% endblock content %}
